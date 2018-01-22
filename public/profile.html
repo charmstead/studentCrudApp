@@ -1,0 +1,120 @@
+<div ng-show="{{alert}}" class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    Your profile has been successfully updated.
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-block">
+                <h5 class="card-title">Personal Details</h5>
+                <form ng-submit="submit()">
+                    <input required="required" type="hidden" value="accessor.getId({{student}})" name="_id" />
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input name="name" required="required" ng-model="student.name" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Reg No</label>
+                        <div class="col-sm-10">
+                            <input required="required" type="text" class="form-control" ng-model="student.matricNumber" name="matricNumber">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Age</label>
+                        <div class="col-sm-10">
+                            <input required="required" type="text" class="form-control" name="age" ng-model="student.age">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Department</label>
+                        <div class="col-sm-10">
+                            <input required="required" type="text" class="form-control" ng-model="student.department.title" name="department">
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Street</label>
+                        <div class="col-sm-10">
+                            <input required="required" type="text" class="form-control" name="street" ng-model="student.address.street">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">City</label>
+                        <div class="col-sm-10">
+                            <input required="required" type="text" class="form-control" name="city" ng-model="student.address.city">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">State</label>
+                        <div class="col-sm-10">
+                            <input required="required" type="text" class="form-control" name="state" ng-model="student.address.state">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">ZipCode</label>
+                        <div class="col-sm-10">
+                            <input required="required" type="text" class="form-control" name="zipCode" ng-model="student.address.zipCode">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-block">
+                <h5 class="card-title">Courses</h5>
+                <div ng-repeat="course in student.coursesOffered">
+                    <h4 class="card-title">{{course.title}}</h4>
+                    <p class="card-text">{{course.description}}</p>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Add Course
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="addCourse()">
+                    
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input name="name" required="required" ng-model="course.title" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Reg No</label>
+                        <div class="col-sm-10">
+                            <input required="required" type="text" class="form-control" ng-model="course.description" name="matricNumber">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary float-right">Add</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

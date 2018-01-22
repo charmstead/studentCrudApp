@@ -1,0 +1,90 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var sqApp = require('../app');
+var sqDebug = require('debug')('student:server');
+var sqHttp= require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var sqPort = normalizePort(process.env.PORT || '3000');
+sqApp.set('port', sqPort);
+
+/**
+ * Create sqHttpserver.
+ */
+
+var sqServer = sqHttp.createServer(sqApp);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+sqServer.listen(sqPort);
+sqServer.on('error', onError);
+sqServer.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var sqPort = parseInt(val, 10);
+
+  if (isNaN(sqPort)) {
+    // named pipe
+    return val;
+  }
+
+  if (sqPort >= 0) {
+    // port number
+    return sqPort;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for sqHttpserver "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var sqBind = typeof sqPort === 'string'
+    ? 'Pipe ' + sqPort
+    : 'Port ' + sqPort;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(sqBind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(sqBind+ ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for sqHttpserver "listening" event.
+ */
+
+function onListening() {
+  var sqAddr = sqServer.address();
+  var sqBind = typeof sqAddr === 'string'
+    ? 'pipe ' + sqAddr
+    : 'port ' + sqAddr.port;
+  sqDebug('Listening on ' + sqBind);
+}

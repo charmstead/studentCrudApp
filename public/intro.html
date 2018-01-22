@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/repaintless.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/cssanimation.css">
+<style type="text/css">
+  .typing {
+    width: 473px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #7E2EA0;
+    color: #7E2EA0;
+    font-weight: 700;
+    margin: 0 auto;
+
+    animation: typing 2s steps(12, end), cursor .2s steps(12, end) infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+
+  @keyframes cursor {
+    50% {
+      border-color: transparent
+    }
+  }
+</style>
+
+<div class="main-container" role="main" style="margin-top:20px;">
+    <div class="element-animated slide-from-right"></div>
+    <div class="element-animated slide-from-left"></div>
+    <div class="element-animated slide-from-top"></div>
+    <div class="element-animated slide-from-bottom"></div>
+    <div class="element-animated slide-from-right-bottom"></div>
+    <div class="element-animated slide-from-right-top"></div>
+    <div class="element-animated slide-from-left-bottom"></div>
+    <div class="element-animated slide-from-left-top"></div>
+    <div class="element-animated slide-left-right"></div>
+    <div class="element-animated slide-top-bottom"></div>
+    <div class="element-animated tremble"></div>
+  </div>
+
+  <h1 class="cssanimation typing"> StudentCrudApplication</h1>
+  <script>
+  
+    setTimeout(function(){
+      window.location.href="/all";
+    },5000);
+  </script>
